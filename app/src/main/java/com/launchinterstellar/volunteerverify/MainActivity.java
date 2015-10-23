@@ -1,13 +1,15 @@
 package com.launchinterstellar.volunteerverify;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
     WebView web;
 
@@ -20,7 +22,8 @@ public class MainActivity extends AppCompatActivity {
         web = (WebView) findViewById(R.id.webView);
         web.setWebViewClient(new myWebClient());
         web.getSettings().setJavaScriptEnabled(true);
-        web.loadUrl("https://volunteerverify.herokuapp.com/");
+        web.setWebChromeClient(new WebChromeClient());
+        web.loadUrl("http://volunteerverify.herokuapp.com/");
     }
 
     public class myWebClient extends WebViewClient {
